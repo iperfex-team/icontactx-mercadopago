@@ -1,0 +1,181 @@
+{
+    "translation": {
+        "dashboard": {
+            "title": "Panel",
+            "header": {
+                "profile": {
+                    "logout": "Cerrar sesión"
+                }
+            },
+            "nav": {
+                "dashboard": "Panel",
+                "users": "Usuarios",
+                "devices": "Dispositivos",
+                "license": "Licencias",
+                "products": "Productos"
+            },
+            "footer": {
+                "all rights reserved": "Todos los derechos reservados"
+            },
+            "totalUserAccounts": "Cuentas de usuario totales",
+            "totalTenantsAccounts": "Cuentas de empresa totales",
+            "totalDevices": "Dispositivos totales",
+            "banAlert": "Alertas de baneo",
+            "cpuUsage": "Uso de CPU",
+            "memoryUsage": "Uso de memoria"
+        },
+        "users": {
+            "title": "Usuarios",
+            "table": {
+                "header": {
+                    "id": "ID",
+                    "company": "Empresa",
+                    "fullName": "Nombre completo",
+                    "level": "Rol",
+                    "status": "Estado",
+                    "country": "País",
+                    "creationDate": "Fecha de creación",
+                    "lastLogin": "Último acceso",
+                    "actions": {
+                        "label": "Acciones",
+                        "edit": "Editar",
+                        "delete": "Eliminar"
+                    }
+                },
+                "noData": "No se encontraron usuarios"
+            },
+            "add": {
+                "title": "Agregar usuario"
+            },
+            "edit": {
+                "title": "Editar usuario",
+                "form": {
+                    "name": {
+                        "label": "Nombre",
+                        "placeholder": "Nombre"
+                    },
+                    "email": {
+                        "label": "Correo electrónico",
+                        "placeholder": "Dirección de correo electrónico"
+                    },
+                    "role": {
+                        "label": "Rol",
+                        "options": {
+                            "admin": "Administrador",
+                            "user": "Usuario"
+                        }
+                    },
+                    "submit": "Editar"
+                }
+            },
+            "form": {
+                "fullName": {
+                    "label": "Nombre completo",
+                    "placeholder": "John Doe"
+                },
+                "company": {
+                    "label": "Empresa",
+                    "placeholder": "Nombre de la Empresa"
+                },
+                "email": {
+                    "label": "Correo electrónico",
+                    "placeholder": "Dirección de correo electrónico"
+                },
+                "phone": {
+                    "label": "Teléfono",
+                    "placeholder": "Teléfono"
+                },
+                "password": {
+                    "label": "Contraseña",
+                    "placeholder": "Contraseña"
+                },
+                "confirmPassword": {
+                    "label": "Confirmar contraseña",
+                    "placeholder": "Confirmar contraseña"
+                },
+                "country": "País",
+                "timezone": "Zona horaria",
+                "language": {
+                    "label": "Idioma",
+                    "placeholder": "Selecciona un idioma",
+                    "options": {
+                        "en": "Inglés",
+                        "es": "Español",
+                        "pt": "Portugués"
+                    }
+                },
+                "typeUser": {
+                    "label": "Tipo de usuario"
+                },
+                "enabled": {
+                    "label": "Habilitado"
+                },
+                "submit": "Agregar",
+                "update": "Actualizar",
+                "errorMessages": {
+                    "confirmPassword": "Las contraseñas no coinciden",
+                    "passwordLength": "La contraseña debe tener al menos 8 caracteres"
+                }
+            }
+        },  
+        "404": {
+            "title": "Página no encontrada",
+            "text": "La página que estás buscando no se encuentra. Por favor, verifica la URL e inténtalo de nuevo.",
+            "button": "Volver al inicio"
+        },
+        "payment-method": {
+            "title": "Métodos de pago",
+            "selectTenant": "Selecciona una empresa",
+            "selectDevice": "Selecciona un dispositivo"
+        },
+        "payment": {
+            "title": "Pagar",
+            "selectTenant": "Selecciona una empresa",
+            "selectDevice": "Selecciona un dispositivo",
+            "Nano5": "5 canales",
+            "Micro10": "10 canales",
+            "Small20": "20 canales",
+            "Medium50": "50 canales",
+            "Large100": "100 canales",
+            "1Month": "1 mes",
+            "3Month":"3 meses",
+            "6Month":"6 meses",
+            "1Year":"1 año"
+        },
+        "product-pay": {
+            "title": "Definir condiciones de la licencia",
+            "selectTenant": "Empresa",
+            "selectDevice": "Dispositivo",
+            "attention": {
+                "title": "Atención",
+                "message": "Por favor, selecciona un {{ type }} para ver los productos"
+            },
+            "tenant": {
+                "label": "Empresa"
+            },
+            "device": {
+                "label": "Dispositivo"
+            },
+            "company": {
+                "label": "Empresa"
+            },
+            "licenseName": {
+                "label": "Nombre de la licencia",
+                "placeholder": "Nombre de la licencia"
+            },
+            "channels": {
+                "label": "Canales",
+                "placeholder": "Selecciona cantidad de canales"
+            },
+            "expirationDate": {
+                "label": "Fecha de expiración",
+                "placeholder": "Selecciona fecha de expiración"
+            },
+            "submit": "Pagar",
+            "update": "Actualizar",
+            "days": "días"
+        },
+        "days": "días",
+        "view": "Ver"
+    }
+}

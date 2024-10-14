@@ -1,0 +1,19 @@
+{
+    "translation": {
+        "app": "My App",
+        "login": {
+            "title": "Sign in to your account",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Email address"
+                },
+                "password": {
+                    "label": "Password",
+                    "placeholder": "Password"
+                },
+                "submit": "Sign in"
+            }
+        }
+    }
+}

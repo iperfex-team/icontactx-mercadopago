@@ -1,0 +1,35 @@
+{
+    "translation": {
+        "login": {
+            "title": "Sign in to your account",
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Email address"
+                },
+                "password": {
+                    "label": "Password",
+                    "placeholder": "Password"
+                },
+                "submit": "Sign in"
+            }
+        },
+        "dashboard": {
+            "header": {
+                "profile": {
+                    "logout": "Logout"
+                }
+            },
+            "nav": {
+                "dashboard": "Dashboard",
+                "users": "Users",
+                "devices": "Devices",
+                "license": "Licenses",
+                "products": "Products"
+            },
+            "footer": {
+                "all rights reserved": "All rights reserved"
+            }
+        }
+    }
+}
