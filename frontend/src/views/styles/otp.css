@@ -1,0 +1,18 @@
+.otp-container {
+    justify-content: center;
+}
+
+.otp-container :disabled {
+    opacity: 0.8;
+}
+
+/* .otp-container input {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: var(--radius);
+    background: var(--input);
+    color: var(--foreground);
+} */

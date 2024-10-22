@@ -5,7 +5,6 @@ import { useAuthStore } from "@/store/auth/auth.store";
 import { Footer } from "@/components/ui/Footer";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
-import { CloudShell } from "@/app/core/cloud-shell/components";
 
 export const AppLayout = () => {
     // const setUser = useAuthStore((state) => state.setUser);
@@ -42,7 +41,6 @@ export const AppLayout = () => {
                     </main>
                 </div>
                 <Footer />
-                <CloudShell />
             </div>
 
             <ToastContainer />

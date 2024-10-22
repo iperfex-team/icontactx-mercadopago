@@ -14,48 +14,54 @@ import {
 import { SidebarItem } from "..";
 import { useAuthStore, useUIStore } from "@/store/index";
 
-const isAdmin =
-    useAuthStore.getState().user?.level === 0 ||
-    useAuthStore.getState().user?.level === 1;
-
-const menuItems = [
-    {
-        title: "Dashboard",
-        path: "http://localhost:5173/dashboard",
-        icon: <IoSpeedometerOutline size={20} />,
-        isVisible: isAdmin,
-    },
-    {
-        title: "Users",
-        path: "http://localhost:5173/users",
-        icon: <IoPeopleOutline size={20} />,
-        isVisible: isAdmin,
-    },
-    {
-        title: "Devices",
-        path: "http://localhost:5173/devices",
-        icon: <IoGridOutline size={20} />,
-        isVisible: isAdmin,
-    },
-    {
-        title: "License",
-        path: "http://localhost:5173/licenses",
-        icon: <IoTrophyOutline size={20} />,
-        isVisible: useAuthStore.getState().user?.level === 0,
-    },
-    {
-        title: "Products",
-        path: "http://localhost:5173/products",
-        icon: <IoBasketOutline size={20} />,
-        isVisible: true,
-    },
-];
-
 export const Sidebar = () => {
+    const { t } = useTranslation();
     const isSidebarOpen = useUIStore((state) => state.isSidebarOpen);
     const setSidebarOpen = useUIStore((state) => state.setSidebarOpen);
+    // Obtenemos el estado del usuario dinámicamente
+    const user = useAuthStore((state) => state.user);
 
-    const { t } = useTranslation();
+    // Evaluamos si es administrador basado en el estado actual del usuario
+    const isAdmin = user?.level === 0 || user?.level === 1;
+
+    const baseUrl =
+        process.env.NODE_ENV === "development"
+            ? import.meta.env.VITE_CORE_API_DEV_URL
+            : import.meta.env.VITE_CORE_API_PROD_URL
+
+    const menuItems = [
+        {
+            title: "Dashboard",
+            path: `${baseUrl}/dashboard`,
+            icon: <IoSpeedometerOutline size={20} />,
+            isVisible: isAdmin,
+        },
+        {
+            title: "Users",
+            path: `${baseUrl}/users`,
+            icon: <IoPeopleOutline size={20} />,
+            isVisible: isAdmin,
+        },
+        {
+            title: "Devices",
+            path: `${baseUrl}/devices`,
+            icon: <IoGridOutline size={20} />,
+            isVisible: isAdmin,
+        },
+        {
+            title: "License",
+            path: `${baseUrl}/licenses`,
+            icon: <IoTrophyOutline size={20} />,
+            isVisible: useAuthStore.getState().user?.level === 0,
+        },
+        {
+            title: "Products",
+            path: `${baseUrl}/products`,
+            icon: <IoBasketOutline size={20} />,
+            isVisible: true,
+        },
+    ];
+
 
     return (
         <>
@@ -173,7 +179,7 @@ export const Sidebar = () => {
                                                     key={index}
                                                     title={t(
                                                         "dashboard.nav." +
-                                                            item.title.toLowerCase()
+                                                        item.title.toLowerCase()
                                                     )}
                                                     icon={item.icon}
                                                     path={item.path}

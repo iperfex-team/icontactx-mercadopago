@@ -7,7 +7,6 @@ export {
     type TSuccessResponseSchema,
 } from "./ResponsesSchema";
 
-export { type AuthForm } from "./AuthSchema";
 export { userSchema } from "./UserSchema";
 export { type UserFormData } from "./UserSchema";
 export * as UserSchema from "./UserSchema";

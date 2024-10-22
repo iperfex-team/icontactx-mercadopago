@@ -48,9 +48,11 @@ export const EditUserSchema = z.object({
     country: z.string(),
     country_iso: z.string(),
     creation_date: z.coerce.date(),
+    customer_number: z.number(),
     email: z.string(),
     enabled: z.boolean(),
     fullname: z.string(),
+    icid: z.string(),
     id: z.number(),
     language: z.string(),
     last_login: z.coerce.date(),
@@ -58,6 +60,7 @@ export const EditUserSchema = z.object({
     phone: z.number(),
     status: z.number(),
     timezone: z.string(),
+    totp: z.string(),
     typeuser: z.string(),
 });
 export type TEditUser = z.infer<typeof EditUserSchema>;

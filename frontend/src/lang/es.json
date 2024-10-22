@@ -1,9 +1,34 @@
 {
     "translation": {
+        "login": {
+            "title": "Ingresa a tu cuenta",
+            "admin_dashboard": "Panel de administración",
+            "enter_your_credentials": "Ingresa tus credenciales para acceder al panel.",
+            "form": {
+                "email": {
+                    "label": "Correo electrónico",
+                    "placeholder": "Dirección de correo electrónico"
+                },
+                "password": {
+                    "label": "Contraseña",
+                    "placeholder": "Contraseña"
+                },
+                "submit": "Ingresar"
+            }
+        },
         "dashboard": {
             "title": "Panel",
             "header": {
                 "profile": {
+                    "client_number": "Cliente",
+                    "my_account": "Mi cuenta",
+                    "my_products": "Mis productos",
+                    "payment_history": "Historial de pagos",
+                    "settings": "Configuración",
+                    "show_2fa_modal": "Mostrar modal 2FA",
+                    "support": "Soporte",
+                    "whatsapp": "WhatsApp",
+                    "email": "Correo electrónico",
                     "logout": "Cerrar sesión"
                 }
             },
@@ -15,7 +40,9 @@
                 "products": "Productos"
             },
             "footer": {
-                "all rights reserved": "Todos los derechos reservados"
+                "all rights reserved": "Todos los derechos reservados",
+                "dom_load_time": "Tiempo",
+                "version": "Versión"
             },
             "totalUserAccounts": "Cuentas de usuario totales",
             "totalTenantsAccounts": "Cuentas de empresa totales",
@@ -110,6 +137,9 @@
                 "enabled": {
                     "label": "Habilitado"
                 },
+                "2fa": {
+                    "label": "Habilitar 2FA"
+                },
                 "submit": "Agregar",
                 "update": "Actualizar",
                 "errorMessages": {
@@ -117,19 +147,256 @@
                     "passwordLength": "La contraseña debe tener al menos 8 caracteres"
                 }
             }
-        },  
+        },
+        "devices": {
+            "title": "Dispositivos",
+            "table": {
+                "header": {
+                    "id": "ID",
+                    "company": "Empresa",
+                    "device": "Dispositivo",
+                    "platform": "Plataforma",
+                    "agentVersion": "Agente",
+                    "ip": "IP/País",
+                    "licenses": "Licencias",
+                    "connections": "Conexiones",
+                    "creationDate": "Registrado",
+                    "lastConnection": "Se conectó",
+                    "actions": {
+                        "label": "Acciones",
+                        "edit": "Editar",
+                        "delete": "Eliminar"
+                    }
+                },
+                "noData": "No se encontraron dispositivos"
+            },
+            "add": {
+                "title": "Agregar dispositivo"
+            },
+            "edit": {
+                "title": "Editar dispositivo",
+                "form": {
+                    "tenant": {
+                        "label": "Empresa",
+                        "placeholder": "Empresa"
+                    },
+                    "device": {
+                        "label": "ID Dispositivo",
+                        "placeholder": "ID Dispositivo"
+                    },
+                    "type": {
+                        "label": "Tipo",
+                        "options": {
+                            "desktop": "Escritorio",
+                            "laptop": "Portátil",
+                            "tablet": "Tableta",
+                            "smartphone": "Teléfono inteligente"
+                        }
+                    },
+                    "submit": "Actualizar",
+                    "reset": "Reiniciar",
+                    "back": "Volver",
+                    "cloudShell": "Cloud Shell",
+                    "device_copied": "ID del dispositivo copiado"
+                },
+                "free": "Liberar",
+                "tabs": {
+                    "licenses": {
+                        "title": "Licencias",
+                        "table": {
+                            "header": {
+                                "id": "ID",
+                                "device": "Dispositivo",
+                                "channels": "Canales",
+                                "license_send_count": "Licencia enviada",
+                                "creation_date": "Fecha de creación",
+                                "expire": "Fecha de expiración",
+                                "days": "Días"
+                            },
+                            "noData": "No se encontraron licencias"
+                        }
+                    },
+                    "history": {
+                        "title": "Historial",
+                        "table": {
+                            "header": {
+                                "id": "ID",
+                                "version": "Versión",
+                                "date_connect": "Fecha de conexión",
+                                "ip": "IP/Country",
+                                "action": "Acción"
+                            },
+                            "noData": "No se encontraron registros"
+                        }
+                    },
+                    "logs": {
+                        "title": "Logs",
+                        "table": {
+                            "header": {
+                                "id": "ID",
+                                "command": "Comando",
+                                "status": "Estado",
+                                "parameter": "Parámetro",
+                                "creation_date": "Fecha de creación",
+                                "ip": "IP/Country",
+                                "action": "Acción"
+                            },
+                            "noData": "No se encontraron registros"
+                        }
+                    }
+                }
+            },
+            "form": {
+                "name": {
+                    "label": "Nombre",
+                    "placeholder": "Nombre"
+                },
+                "type": {
+                    "label": "Tipo",
+                    "placeholder": "Selecciona un tipo",
+                    "options": {
+                        "desktop": "Escritorio",
+                        "laptop": "Portátil",
+                        "tablet": "Tableta",
+                        "smartphone": "Teléfono inteligente"
+                    }
+                },
+                "submit": "Agregar",
+                "update": "Actualizar"
+            },
+            "device_offline": "Dispositivo desconectado",
+            "verify_your_device": "Verifica tu dispositivo",
+            "verify_your_device_text": "Si el error persiste, por favor comunícate con soporte."
+        },
+        "licenses": {
+            "title": "Licencias",
+            "table": {
+                "header": {
+                    "id": "ID",
+                    "company": "Empresa",
+                    "status": "Estado",
+                    "license_send_count": "Licencia enviada",
+                    "name": "Nombre",
+                    "device": "Dispositivo",
+                    "channels": "Canales",
+                    "key": "Clave",
+                    "creation_date": "Fecha de creación",
+                    "expire": "Fecha de expiración",
+                    "days": "Días",
+                    "actions": {
+                        "label": "Acciones",
+                        "edit": "Editar",
+                        "delete": "Eliminar"
+                    }
+                },
+                "noData": "No se encontraron licencias"
+            },
+            "add": {
+                "title": "Agregar licencia"
+            },
+            "edit": {
+                "title": "Editar licencia",
+                "licenseTracking": "Seguimiento de licencia"
+            },
+            "form": {
+                "company": {
+                    "label": "Empresa",
+                    "placeholder": "Selecciona una Empresa"
+                },
+                "device": {
+                    "label": "Dispositivo",
+                    "placeholder": "Selecciona un dispositivo"
+                },
+                "licenseName": {
+                    "label": "Nombre de la licencia",
+                    "placeholder": "Nombre de la licencia"
+                },
+                "channels": {
+                    "label": "Canales",
+                    "placeholder": "Canales"
+                },
+                "expirationDate": {
+                    "label": "Fecha de expiración",
+                    "placeholder": "Fecha de expiración"
+                },
+                "submit": "Agregar",
+                "update": "Actualizar",
+                "days": "días"
+            }
+        },
+        "search": {
+            "placeholder": "Buscar registro"
+        },
+        "empty": "No se encontraron usuarios",
+        "pagination": {
+            "to": "a",
+            "page": "Página",
+            "prev": "Anterior",
+            "next": "Siguiente",
+            "rows": "Filas por página",
+            "of": "de",
+            "entries": "entradas",
+            "showing": "Mostrando {{ from }} a {{ to }} de {{ total }} entradas",
+            "filtered": "(filtrado de un total de {{ total }} entradas)"
+        },
+        "messages": {
+            "delete": {
+                "title": "Eliminar registro",
+                "text": "¿Estás seguro de que deseas eliminar este registro?",
+                "confirm": "Eliminar",
+                "cancel": "Cancelar"
+            },
+            "success": {
+                "add": "Registro agregado exitosamente",
+                "edit": "Registro editado exitosamente",
+                "delete": "Registro eliminado exitosamente"
+            },
+            "error": {
+                "add": "Error al agregar el registro",
+                "edit": "Error al editar el registro",
+                "delete": "Error al eliminar el registro"
+            }
+        },
+        "actions": {
+            "delete": {
+                "title": "¿Estás seguro de que deseas realizar esta acción?",
+                "text": "Esta acción no puede deshacerse. Esto borrará permanentemente el registro y removerá la data de nuestros servidores. ",
+                "confirm": "Eliminar",
+                "cancel": "Cancelar"
+            },
+            "restart": {
+                "title": "Reiniciar dispositivo",
+                "text1": "Cuando hagas esto, la licencia será enviada al dispositivo de nuevo, sus credenciales se enviarán tan pronto el cliente se conecte a nuestro sistema nuevamente.",
+                "text2": "¿Estás seguro de que deseas reiniciar el dispositivo?",
+                "confirm": "Reiniciar",
+                "cancel": "Cancelar"
+            }
+        },
         "404": {
             "title": "Página no encontrada",
             "text": "La página que estás buscando no se encuentra. Por favor, verifica la URL e inténtalo de nuevo.",
             "button": "Volver al inicio"
         },
-        "payment-method": {
-            "title": "Métodos de pago",
+        "products": {
+            "title": "Productos",
             "selectTenant": "Selecciona una empresa",
-            "selectDevice": "Selecciona un dispositivo"
+            "selectDevice": "Selecciona un dispositivo",
+            "attention": {
+                "title": "Atención",
+                "message": "Por favor, selecciona un {{ type }} para ver los productos"
+            },
+            "tenant": {
+                "label": "Empresa",
+                "placeholder": "Selecciona una empresa"
+            },
+            "device": {
+                "label": "Dispositivo",
+                "placeholder": "Selecciona un dispositivo"
+            }
         },
         "payment": {
             "title": "Pagar",
+            "total": "Total a pagar",
             "selectTenant": "Selecciona una empresa",
             "selectDevice": "Selecciona un dispositivo",
             "Nano5": "5 canales",
@@ -176,6 +443,23 @@
             "days": "días"
         },
         "days": "días",
-        "view": "Ver"
+        "view": "Ver",
+        "2fa": {
+            "title": "Autenticación de dos factores",
+            "app_authentication": "Autenticación de la aplicación",
+            "scan_the_qr_code": "Escanea el código QR",
+            "code_security": "Código de seguridad",
+            "submit": "Enviar",
+            "regenerate_qr_code": "Regenerar código QR",
+            "dont_show_again": "No mostrar de nuevo",
+            "close": "Cerrar",
+            "one_time_password": "Contraseña de un solo uso",
+            "please_enter_the_one_time_password": "Por favor, ingresa la contraseña de un solo uso",
+            "confirm_otp": "Confirmar OTP",
+            "enter_the_otp_got_from_your_app": "Ingresa la contraseña de un solo uso que obtuviste de tu aplicación",
+            "confirm": "Confirmar",
+            "p1": "Administradores de contraseñas como <1>1Password</1>, <3>Authy</3>, <5>Microsoft Authenticator</5> y <7>Google Authenticator</7>, entre otros, ofrecen extensiones de navegador y aplicaciones que facilitan la generación de códigos 2FA cuando se requieren durante el proceso de inicio de sesión.",
+            "p2": "Utiliza una aplicación de autenticación o una extensión del navegador para escanear el código. Si no puedes escanear, ingresa el código que se encuentra debajo del QR. Los administradores de contraseñas también pueden ayudar a generar los códigos 2FA. Aprende más sobre cómo habilitar el 2FA."
+        }
     }
 }

@@ -25,11 +25,9 @@ export const Helper = () => {
             const module = location.pathname.split("/")[1];
             setHelperUrl(module, "index");
         }
-
         if (pathLevels == 3) {
             const module = location.pathname.split("/")[1];
-            const section = location.pathname.split("/")[2];
-            setHelperUrl(module, section);
+            setHelperUrl(module, "index");
         }
     }, [location.pathname, setHelperUrl]);
 

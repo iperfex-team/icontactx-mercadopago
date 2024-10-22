@@ -1,20 +1,5 @@
 import * as z from "zod";
 
-export const AuthFormSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(8),
-});
-export type AuthForm = z.infer<typeof AuthFormSchema>;
-
-export const DataSchema = z.object({
-    icid: z.string(),
-    message: z.string(),
-    status: z.number(),
-    token: z.string(),
-    totp: z.boolean(),
-});
-export type Data = z.infer<typeof DataSchema>;
-
 export const AuthSchema = z.object({
     icid: z.string(),
     message: z.string(),

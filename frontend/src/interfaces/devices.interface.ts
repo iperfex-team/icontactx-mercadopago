@@ -22,4 +22,5 @@ export interface DeviceData {
     country_code: string;
     country_flag: string;
     is_free: boolean;
+    customer_number: number;
 }

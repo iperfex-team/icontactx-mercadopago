@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "@/store/auth/auth.store";
+import { useUIStore } from "@/store";
 
 export const Footer = () => {
     const userState = useAuthStore((state) => state.user);
     const { t } = useTranslation();
+    const axiosResponseTime = useUIStore((state) => state.axiosResponseTime);
 
     return (
         <div
@@ -17,6 +19,24 @@ export const Footer = () => {
                 </a>
                 . {t("dashboard.footer.all rights reserved")}.
             </span>
+
+            <div className="flex">
+                <span>
+                    {t("dashboard.footer.dom_load_time")}:{" "}
+                    {axiosResponseTime
+                        ? `${axiosResponseTime} ms`
+                        : t("dashboard.footer.loading")}
+                </span>
+
+                <span className="mx-1">|</span>
+
+                <span>
+                    {t("dashboard.footer.version")}:{" "}
+                    {`${import.meta.env.VITE_APP_VERSION} (${
+                        import.meta.env.VITE_APP_HASH
+                    }) ${import.meta.env.VITE_APP_BUILD_DATE}`}
+                </span>
+            </div>
         </div>
     );
 };

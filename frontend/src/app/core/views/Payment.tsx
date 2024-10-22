@@ -1,13 +1,14 @@
 import { CardWrapper } from "@/components";
 import { useQuery } from "@tanstack/react-query";
-import { getPrueba } from "@/api/AuthApi";
+import { postCreatePay } from "@/api/PayApi";
 import { paymentDencode } from "@/api/ProductsApi";
 import { useEffect, useState } from "react";
 import { lang } from "@/helpers";
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
+import { useTranslation } from "react-i18next";
 
-initMercadoPago('APP_USR-209aa261-ff47-405b-9368-3d0a638e5743', {
-  locale: "es-AR",
+initMercadoPago(import.meta.env.VITE_PAY_MP_PROD_CLIENT_ID, {
+  locale: import.meta.env.VITE_PAY_MP_PROD_LOCALE,
 });
 
 export const Payment = () => {
@@ -22,6 +23,9 @@ export const Payment = () => {
   const [channelName, setChannelName] = useState<string>("");
   const [expirationDate, setExpirationDate] = useState<string>("");
   const [expirationDateName, setExpirationDateName] = useState<string>("");
+
+  const t = useTranslation();
+  console.log(t)
 
   useEffect(() => {
     setCode(location.search.slice(4));
@@ -43,33 +47,16 @@ export const Payment = () => {
       setChannel(denconde.data.data.channel);
       setChannelName("payment." + denconde.data.data.channel);
       setExpirationDate(denconde.data.data.expiration);
-      setExpirationDateName("payment."+ denconde.data.data.expiration);
+      setExpirationDateName("payment." + denconde.data.data.expiration);
       setUuid(denconde.data.data.uuid);
     }
   }, [denconde]);
 
-  const prueba = useQuery({
-    queryKey: ["prueba", price, product, uuid],
-    queryFn: () => getPrueba(price, product, uuid),
+  const pay = useQuery({
+    queryKey: ["createPay", price, product, uuid],
+    queryFn: () => postCreatePay(price, product, uuid),
     enabled: !!price && !!product && !!uuid,
   });
-
-  console.log("prueba");
-  console.log(typeof prueba.data);
-  console.log(prueba.data);
-
-  const customization = {
-    visual: {
-      buttonBackground: "red",
-      borderRadius: "30px",
-    },
-    checkout: {
-      theme: {
-        elementsColor: "#4287F5",
-        headerColor: "#4287F5",
-      },
-    },
-  };
 
   return (
     <CardWrapper title={lang("payment.title")} reload={true} goBack={true}>
@@ -83,47 +70,47 @@ export const Payment = () => {
       </div>
 
       <div className="sm:col-span-4 lg:col-span-12 mb-5">
-          <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-            {lang("product-pay.selectDevice")}
-          </label>
-          {device_uuid && <p className="text-sm">{device_uuid}</p>}
-        </div>
+        <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+          {lang("product-pay.selectDevice")}
+        </label>
+        {device_uuid && <p className="text-sm">{device_uuid}</p>}
+      </div>
 
-        <div className="sm:col-span-4 lg:col-span-12 mb-5">
-          <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-            {lang("product-pay.channels.label")}
-          </label>
-          {channel && channelName && <p className="text-sm">{channel} ({lang(`${channelName}`)})</p>}
-        </div>
+      <div className="sm:col-span-4 lg:col-span-12 mb-5">
+        <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+          {lang("product-pay.channels.label")}
+        </label>
+        {channel && channelName && <p className="text-sm">{channel} ({lang(`${channelName}`)})</p>}
+      </div>
 
-        <div className="sm:col-span-4 lg:col-span-12 mb-5">
-          <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-            {lang("product-pay.expirationDate.label")}
-          </label>
-          {expirationDate && expirationDateName && <p className="text-sm">{expirationDate} ({lang(`${expirationDateName}`)})</p>}
-        </div>
+      <div className="sm:col-span-4 lg:col-span-12 mb-5">
+        <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+          {lang("product-pay.expirationDate.label")}
+        </label>
+        {expirationDate && expirationDateName && <p className="text-sm">{expirationDate} ({lang(`${expirationDateName}`)})</p>}
+      </div>
 
       {priceMP && <div className="sm:col-span-12 lg:col-span-12">
         <label
-            htmlFor="username"
-            className="block text-sm font-medium leading-6 text-gray-900 text-xl text-center mt-8 "
-          >
-           TOTAL A PAGAR
-          </label>
-          <label
-            htmlFor="username"
-            className="block text-sm font-medium leading-6 text-gray-900 text-xl text-center mt-2 mb-8"
-          >
+          htmlFor="username"
+          className="block text-sm font-medium leading-6 text-gray-900 text-xl text-center mt-8 "
+        >
+           {lang("payment.total")}
+        </label>
+        <label
+          htmlFor="username"
+          className="block text-sm font-medium leading-6 text-gray-900 text-xl text-center mt-2 mb-8"
+        >
           $ {priceMP}
-          </label>
-        </div> }
+        </label>
+      </div>}
 
       <div className="flex justify-around flex-wrap">
-        {prueba && prueba.data && (
+        {pay && pay.data && (
           <div>
             <Wallet
               initialization={{
-                preferenceId: String(prueba.data),
+                preferenceId: String(pay.data),
                 redirectMode: "modal",
               }}
             />

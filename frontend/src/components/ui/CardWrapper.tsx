@@ -62,7 +62,7 @@ CardWrapperProps) => {
                                     size={"icon"}
                                     onClick={() => window.location.reload()}
                                 >
-                                    <IoReloadOutline className="w-6 h-6 text-orange-500 hover:text-orange-400" />
+                                    <IoReloadOutline className="w-6 h-6 text-slate-700 hover:text-slate-600" />
                                 </Button>
                             </div>
                         )}
