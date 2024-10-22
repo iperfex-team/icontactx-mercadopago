@@ -1,4 +1,0 @@
-initial_version: 1.1.3
-git_hash: development
-last_build_time: 20241022-151740
-last_build_time_git_push: 20241015-141546
