@@ -1,7 +1,7 @@
 # Variables para AWS y los nombres de los binarios
 APP_NAME := env_generator
 BIN_DIR := ./bin
-AWS_S3_BUCKET := icontactx-ui
+AWS_S3_BUCKET := mercado-pago-ar-icontactx
 LINUX_AMD64_BIN := $(BIN_DIR)/$(APP_NAME)_linux_amd64
 LINUX_ARM64_BIN := $(BIN_DIR)/$(APP_NAME)_linux_arm64
 WINDOWS_BIN := $(BIN_DIR)/$(APP_NAME)_windows.exe
@@ -77,7 +77,7 @@ dev-react:
 
 # Actualizar archivos en S3 usando la variable del bucket S3
 update:
-	aws s3 sync dist/ s3://$(AWS_S3_BUCKET)/ --acl public-read
+	aws s3 sync dist/ s3://$(AWS_S3_BUCKET)/
 	aws s3 ls s3://$(AWS_S3_BUCKET)/
 
 # Configurar AWS CLI
