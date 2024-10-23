@@ -24,8 +24,7 @@ export const Payment = () => {
   const [expirationDate, setExpirationDate] = useState<string>("");
   const [expirationDateName, setExpirationDateName] = useState<string>("");
 
-  const t = useTranslation();
-  console.log(t)
+  const { t } = useTranslation();
 
   useEffect(() => {
     setCode(location.search.slice(4));
@@ -59,7 +58,7 @@ export const Payment = () => {
   });
 
   return (
-    <CardWrapper title={lang("payment.title")} reload={true} goBack={true}>
+    <CardWrapper title={t("payment.title")} reload={true} goBack={true}>
 
       <div className="flex justify-around flex-wrap">
 

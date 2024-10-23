@@ -5,7 +5,7 @@ import { isAxiosError } from "axios";
 
 export async function getUser() {
     try {
-        const { data } = await api.get<string>("/core/users/data");
+        const { data } = await api.get<string>("/pay/users/data");
         const response = AuthUserDataSchema.safeParse(data);
         if (response.success) {
             return response.data;

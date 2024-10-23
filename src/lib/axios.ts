@@ -15,9 +15,6 @@ api.interceptors.request.use((config) => {
 
         const { exp: expirationToken } = jwt(token);
 
-        console.log(expirationToken);
-        console.log(Date.now());
-
         // Check if token has expired
         if (expirationToken && Date.now() > Number(expirationToken)) {
             // Handle token expiration logic here

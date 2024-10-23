@@ -16,7 +16,7 @@ const getCookie = (name: string) => {
 }
 
 const onSubmit = async (token: string, icid: string) => {
-    const loginUser = useAuthStore((state) => state.loginUser);
+    const { loginUser } = useAuthStore.getState();  // Acceso seguro al estado
     await loginUser(token, icid);
 }
 
@@ -36,52 +36,41 @@ const coreApi = axios.create({
 });
 
 coreApi.interceptors.request.use((config) => {
-    let cookieValue = ""
-    let cookieToken = ""
-    let cookieIcid = ""
+    let cookieValue = "";
+    let cookieToken = "";
+    let cookieIcid = "";
     config.metadata = { startTime: new Date() };
 
-    if (!useAuthStore.getState().token || !useAuthStore.getState().icid) {
+    const { token, icid, logout } = useAuthStore.getState();  // Acceso seguro al estado
+
+    if (!token || !icid) {
         cookieValue = String(getCookie('auth-store'));
         if (!cookieValue) {
-            const logout = useAuthStore((state) => state.logout);
             logout();
         }
         if (cookieValue) {
-            const cookie = JSON.parse(cookieValue)
+            const cookie = JSON.parse(cookieValue);
 
             if (cookie.token && cookie.icid) {
-                cookieToken = cookie.token
-                cookieIcid = cookie.icid
+                cookieToken = cookie.token;
+                cookieIcid = cookie.icid;
 
-                onSubmit(cookie.token, cookie.icid)
+                onSubmit(cookie.token, cookie.icid);
             }
-
         }
-
-    }
-    let token = ""
-    let icid = ""
-    if (!useAuthStore.getState().token) {
-        token = String(cookieToken)
-    } else {
-        token = String(useAuthStore.getState().token)
     }
 
-    if (!useAuthStore.getState().icid) {
-        icid = String(cookieIcid)
-    } else {
-        icid = String(useAuthStore.getState().icid)
-    }
+    let finalToken = token || cookieToken;
+    let finalIcid = icid || cookieIcid;
 
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-        config.headers.icid = icid;
+    if (finalToken) {
+        config.headers.Authorization = `Bearer ${finalToken}`;
+        config.headers.icid = finalIcid;
 
         // Check if token has expired
-        if (tokenIsInvalid(token)) {
+        if (tokenIsInvalid(finalToken)) {
             console.log("is invalid");
-            useAuthStore.getState().logout();
+            logout();
         }
     }
 
@@ -96,8 +85,8 @@ coreApi.interceptors.response.use(
         (response.config as any).metadata.duration =
             endTime.getTime() - startTime.getTime();
 
-        const setDuration = useUIStore.getState().setAxiosResponseTime;
-        setDuration((response.config as any).metadata.duration);
+        const { setAxiosResponseTime } = useUIStore.getState();  // Acceso seguro al estado
+        setAxiosResponseTime((response.config as any).metadata.duration);
 
         return response;
     },
@@ -108,8 +97,8 @@ coreApi.interceptors.response.use(
         (error.config as any).metadata.duration =
             endTime.getTime() - startTime.getTime();
 
-        const setDuration = useUIStore.getState().setAxiosResponseTime;
-        setDuration((error.config as any).metadata.duration);
+        const { setAxiosResponseTime } = useUIStore.getState();  // Acceso seguro al estado
+        setAxiosResponseTime((error.config as any).metadata.duration);
 
         return Promise.reject(error);
     }

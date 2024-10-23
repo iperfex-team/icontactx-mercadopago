@@ -11,8 +11,6 @@ export const paymentDencode = async (
                 code
 
             });
-        console.log(data)
-        console.log(data)
         return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
