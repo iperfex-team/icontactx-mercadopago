@@ -15,7 +15,7 @@ import zodPtTranslations from "zod-i18n-map/locales/pt/zod.json";
 i18n.use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        debug: true,
+        debug: false,
         // lng: "en",
         fallbackLng: "en",
         resources: {

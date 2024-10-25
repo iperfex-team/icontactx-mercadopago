@@ -1,4 +1,4 @@
-initial_version: 1.1.6
-git_hash: 9c47c0b
-last_build_time: 20241025-163708
-last_build_time_git_push: 20241024-104112
+initial_version: 1.1.7
+git_hash: c73a25f
+last_build_time: 20241025-165721
+last_build_time_git_push: 20241025-165721
