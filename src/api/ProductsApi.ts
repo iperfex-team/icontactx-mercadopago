@@ -14,6 +14,7 @@ export const paymentDencode = async (
         return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
+            window.location.href = "/payment"
             throw new Error(error.response.data.message);
         }
 

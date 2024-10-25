@@ -52,9 +52,9 @@ export const Payment = () => {
   }, [denconde]);
 
   const pay = useQuery({
-    queryKey: ["createPay", price, product, uuid],
-    queryFn: () => postCreatePay(price, product, uuid),
-    enabled: !!price && !!product && !!uuid,
+    queryKey: ["createPay", price, product, uuid, productDescription],
+    queryFn: () => postCreatePay(price, product, uuid, productDescription),
+    enabled: !!price && !!product && !!uuid && !!productDescription,
   });
 
   return (
@@ -105,11 +105,11 @@ export const Payment = () => {
       </div>}
 
       <div className="flex justify-around flex-wrap">
-        {pay && pay.data && (
+        {pay.data && pay.data.id && (
           <div>
             <Wallet
               initialization={{
-                preferenceId: String(pay.data),
+                preferenceId: String(pay.data.id),
                 redirectMode: "modal",
               }}
             />

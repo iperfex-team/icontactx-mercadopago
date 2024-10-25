@@ -2,6 +2,12 @@ import { lang } from "@/helpers";
 import { Link } from "react-router-dom";
 
 export const NotFoundView = () => {
+
+    const redirectProducts =
+    process.env.NODE_ENV === "development"
+        ? import.meta.env.VITE_CORE_API_DEV_URL
+        : import.meta.env.VITE_CORE_API_PROD_URL
+
     return (
         <main className="grid min-h-full px-6 py-24 bg-white place-items-center sm:py-32 lg:px-8">
             <div className="text-center">
@@ -19,7 +25,7 @@ export const NotFoundView = () => {
                 </p>
                 <div className="flex items-center justify-center mt-10 gap-x-6">
                     <Link
-                        to={"/dashboard"}
+                        to={`${redirectProducts}/products`}
                         className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         {lang("404.button")}
