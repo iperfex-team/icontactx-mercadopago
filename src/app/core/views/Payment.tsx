@@ -13,7 +13,6 @@ initMercadoPago(import.meta.env.VITE_PAY_MP_PROD_CLIENT_ID, {
 
 export const Payment = () => {
   const [code, setCode] = useState<string>("");
-  const [price, setPrice] = useState<string>("");
   const [priceMP, setPriceMP] = useState<string>("");
   const [product, setProduct] = useState<string>("");
   const [productDescription, setProductDescription] = useState<string>("");
@@ -39,7 +38,6 @@ export const Payment = () => {
   useEffect(() => {
     if (denconde?.data?.data?.mp_country_pay) {
       setPriceMP(denconde.data.data.mp_country_pay[0].price);
-      setPrice(denconde.data.data.price);
       setProduct(denconde.data.data.license_name);
       setProductDescription(denconde.data.data.license_description);
       setDevice_uuid(denconde.data.data.device);
@@ -52,9 +50,9 @@ export const Payment = () => {
   }, [denconde]);
 
   const pay = useQuery({
-    queryKey: ["createPay", price, product, uuid, productDescription],
-    queryFn: () => postCreatePay(price, product, uuid, productDescription),
-    enabled: !!price && !!product && !!uuid && !!productDescription,
+    queryKey: ["createPay", priceMP, product, uuid, productDescription],
+    queryFn: () => postCreatePay(priceMP, product, uuid, productDescription),
+    enabled: !!priceMP && !!product && !!uuid && !!productDescription,
   });
 
   return (
